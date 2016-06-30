@@ -1,0 +1,19 @@
+<div ng-controller="usersController as UC">
+    <a href="#/">Home</a> | <a href ng-click="UC.logout()">Logout</a>
+</div>
+<div ng-controller="newAnswerController as NAC">
+  <p>
+    <a href ng-click="NAC.show(NAC.current_question._id)">Go Back to Question</a>
+  </p>
+  <h4>{{NAC.current_question.text}}</h4>
+  <p>{{NAC.current_question.description}}</p>
+  <form>
+    <label>Your Answer</label><br>
+    <textarea name="answer" rows="8" cols="40" ng-model="NAC.answer"></textarea><br>
+    <label>Supporting details for your answer (optional)</label><br>
+    <textarea name="details" rows="8" cols="40" ng-model="NAC.details"></textarea><br>
+    <a href="#/"><button>Cancel</button></a>
+    <button ng-click="NAC.create()">Submit</button>
+
+  </form>
+  </div>

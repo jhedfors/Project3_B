@@ -1,0 +1,36 @@
+<div ng-controller="usersController as UC">
+    <a href="#/">Home</a> | <a href ng-click="UC.logout()">Logout</a>
+</div>
+<div ng-controller="dashboardController as DC">
+  <h4>Hi {{DC.activeUser.name}}</h4>
+  <p>
+    <a href="#/new_question">Ask a Question</a>
+  </p>
+  <label>Search:</label><input type="text" ng-model="question_filter">
+  <table>
+    <thead>
+      <th>
+        Question
+      </th>
+      <th>
+        Answers
+      </th>
+      <th>
+        Action
+      </th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="question in DC.questions | filter:question_filter | orderBy:'createdAt'">
+        <td ng-bind="question.text">
+        </td>
+        <td >
+          {{question.answers.length}}
+        </td>
+        <td >
+          <a href ng-click="DC.show(question._id)">Show</a>
+          <a href ng-click="DC.answer(question._id)">Answer</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

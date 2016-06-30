@@ -1,0 +1,32 @@
+
+<div ng-controller="usersController as UC">
+    <a href="#/">Home</a> | <a href ng-click="UC.logout()">Logout</a>
+</div>
+<div ng-controller="questionController as QC">
+  <p>
+    <a href ng-click="QC.answer(QC.current_question._id)">Answer this Question</a>
+  </p>
+  <h4>Question: </b>{{QC.current_question.text}}</h4>
+  <p>{{QC.current_question.description}}</p>
+  <table>
+    <tr ng-repeat="answer in QC.current_question.answers | orderBy:'-likes'">
+      <td>
+        <p>
+          <b>Answered by:</b>{{answer.name}}
+        </p>
+        <p>
+          <b>Answer:</b>{{answer.answer}}
+        </p>
+        <p>
+          <b>Additional details:</b>{{answer.details}}
+        </p>
+      </td>
+      <td>
+        <b>Likes:</b>{{answer.likes}}
+      </td>
+      <td>
+        <button ng-click="QC.like(answer)">Like</button>
+      </td>
+    </tr>
+  </table>
+  </div>

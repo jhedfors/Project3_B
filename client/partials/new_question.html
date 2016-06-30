@@ -1,0 +1,18 @@
+<div ng-controller="usersController as UC">
+    <a href="#/">Home</a> | <a href ng-click="UC.logout()">Logout</a>
+</div>
+<div ng-controller="newQuestionController as NQC">
+<h3>New Question</h3>
+  <form name='new_question'>
+    <label>Question:</label><br>
+    <input type="text" name="question" ng-model="NQC.name" ng-minlength='2' required><br>
+    <label>Description: (optional)</label><br>
+    <textarea name="description" rows="8" cols="40" ng-model="NQC.description"></textarea><br>
+    <a href="#/"><button>Cancel</button></a>
+    <button ng-click="NQC.create()">Submit</button>
+  </form>
+  <div ng-messages="NQC.new_question.question.$error">
+    <p ng-message="required">The question is required.</p>
+    <p ng-message="minlength">Minumum length is two characters.</p>
+  </div>
+</div>
